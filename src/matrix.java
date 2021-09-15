@@ -11,6 +11,7 @@ public class matrix{
 		for(int i=0;i<1000;i++)for(int j=0;j<1000;j++)mat[i][j]=0;
 	}
 	
+	//* READING MATRIX *//
 	//membaca matrix persegi (determinan, balikan)
 	public void readSQ(){
 		System.out.printf("Masukan Matriks:\n1. Keyboard\n2. File\nPilihan:");
@@ -35,7 +36,7 @@ public class matrix{
 			this.mat[i][j]=this.in.nextFloat();
 			in.nextLine(); //same
 		}
-		//this.display();
+		//this.display();	
 	}
 	
 	//not done
