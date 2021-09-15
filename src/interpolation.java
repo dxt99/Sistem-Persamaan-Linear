@@ -53,7 +53,7 @@ public class interpolation{
 			}
 			this.n=i-1; //i overflow
 			filein.close();
-			this.display();
+			//this.display();
 		}catch(FileNotFoundException ex){
 			System.out.printf("File not found\n"); //loops back to drvier
 		}
