@@ -1,4 +1,4 @@
-## matriks.java:
+## matrix.java:
 
 
 ### functions:
