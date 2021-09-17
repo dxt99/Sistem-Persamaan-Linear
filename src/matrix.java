@@ -12,8 +12,7 @@ public class matrix{
 	}
 	
 	//* READING MATRIX *//
-	//membaca matrix persegi (determinan, balikan)
-	public void readSQ(){
+	public void read(){
 		System.out.printf("Masukan Matriks:\n1. Keyboard\n2. File\nPilihan:");
 		int choice=this.in.nextInt();
 		if(choice==1)this.readKey();
