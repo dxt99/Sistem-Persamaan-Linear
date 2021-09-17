@@ -3,7 +3,7 @@
 
 ### functions:
 
-I/O: read, readKey, readFile, outKey, outFile
+I/O: read, readKey, readFile, outFloatKey, outFloatFile, outPersKey, outPersFile
 
 Operasi: tukarBaris, kaliX, tambahBaris
 
