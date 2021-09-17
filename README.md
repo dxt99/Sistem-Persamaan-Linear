@@ -5,6 +5,6 @@
 
 I/O: read, readKey, readFile, outFloatKey, outFloatFile, outPersKey, outPersFile
 
-Operasi: tukarBaris, kaliX, tambahBaris, kali
+Operasi: tukarBaris, kaliX, tambahBaris, kaliMat
 
 Function: gauss, transpose, gaussJordan, linInv, cramer, detGauss, detKof, invOBE, invKof
