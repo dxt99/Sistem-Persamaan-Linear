@@ -30,7 +30,7 @@ public class interpolation{
 	void readKey(){
 		System.out.printf("Masukkan n (banyak titik n+1): ");
 		this.n=this.in.nextInt();
-		in.nextLine() //eats newline
+		in.nextLine(); //eats newline
 		for(int i=0;i<=this.n;i++){
 			this.x[i]=in.nextFloat();
 			in.nextLine(); //same
