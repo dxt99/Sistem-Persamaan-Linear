@@ -61,8 +61,8 @@ public class matrix{
 	
 	//testing only
 	public static void display(){
-		for(int i=0;i<n;i++){
-			for(int j=0;j<m;j++){
+		for(int i=0;i<this.n;i++){
+			for(int j=0;j<this.m;j++){
 				System.out.printf("%f ",this.mat[i][j]);
 			}
 			System.out.println();
