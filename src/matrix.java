@@ -103,5 +103,115 @@ public class matrix{
 			this.mat[baris1][i]+=this.mat[baris2][i]*x;
 		}
 	}
+
+	int[] notZero(int baris, int kolom){
+		// mencari bukan 0
+		int i=baris;
+		int j=kolom;
+		boolean found = false;
+		while (j<=m-1 && !found){
+			while (i<=n-1 && !found){
+				if (this.mat[i][j] != 0) {
+					found = true;
+				} else {
+					i += 1;
+				}
+			}
+			if (!found) {
+				i = baris;
+			}
+			j += 1;
+		}
+		if (!found){
+			i = -1;
+			j = 0;
+		}
+		int[] arrIDX = {i, j-1};
+		return arrIDX;
+	}
+
+	public void gauss(){
+
+		int bar=0;
+		int kol=0;
+		int[] idxNotZero;
+		int i, j;
+
+		while (bar<=this.n-1 && kol<=this.m-1){
+			idxNotZero = notZero(bar, kol);
+			if (idxNotZero[0]==-1){
+				bar = this.n;
+			} else{
+				tukarBaris(bar, idxNotZero[0]);
+				kol = idxNotZero[1]; //next kol
+				for (i= bar+1; i<=this.n-1; i++){
+					if (this.mat[i][kol]!=0){
+						tambahBaris(i, bar, (-1*this.mat[i][kol]/this.mat[bar][kol]));
+					}
+				}
+				bar += 1; //next bar
+			}
+		}
+		// Sudah mempunyai bilangan utama, tetapi belum mempunyai 1 utama
+
+		// Menghasilkan 1 utama
+		bar = 0;
+		kol = 0;
+		boolean done;
+
+		while (bar<=this.n-1){
+			done = false;
+			while (kol<=this.m-1 && !done){
+				if (this.mat[bar][kol]!=0){
+					kaliX(bar, 1/this.mat[bar][kol]);
+					done = true;
+				} else {
+					kol += 1;
+				}
+			}
+			bar += 1;
+		}
+
+		// fix -0
+		for (i=0; i<=n-1; i++){
+			for (j=0; j<=m-1; j++){
+				if (this.mat[i][j]==-0){
+					this.mat[i][j]=0;
+				}
+			}
+		}
+
+	}
+
+	public void gaussJordan(){
+
+		int bar = 0;
+		int kol = 0;
+		boolean done;
+		int tempBar;
+
+		gauss();
+
+		while (bar<=this.n-1){
+			done = false;
+			tempBar = 0;
+			while (kol<=this.m-1 && !done){
+				if (this.mat[bar][kol]==1){
+					while (tempBar <= this.n-1){
+						if (this.mat[tempBar][kol]!=0 && tempBar!=bar){
+							tambahBaris(tempBar, bar, (-1*this.mat[tempBar][kol]/this.mat[bar][kol]));
+						}
+						tempBar += 1;
+					}
+					if (tempBar == this.n) {
+						done = true;
+					}
+				}
+				kol += 1;
+			}
+			bar += 1;
+		}
+
+	}
 	
 }
