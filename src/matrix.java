@@ -230,5 +230,39 @@ public class matrix {
 			}
 	}
 
+	double determinanOBE() {
+		int bar = 0;
+		int kol = 0;
+		int[] idxNotZero;
+		int i, j, k, l;
+		int reverse = 0;
+		double hasil = 1;
+
+		while (bar <= this.n - 1 && kol <= this.m - 1) {
+			idxNotZero = notZero(bar, kol);
+			if (idxNotZero[0] == -1) {
+				bar = this.n;
+			} else {
+				tukarBaris(bar, idxNotZero[0]);
+				reverse += 1;
+				kol = idxNotZero[1]; //next kol
+				for (i = bar + 1; i <= this.n - 1; i++) {
+					if (this.mat[i][kol] != 0) {
+						tambahBaris(i, bar, (-1 * this.mat[i][kol] / this.mat[bar][kol]));
+					}
+				}
+				bar += 1; //next bar
+			}
+		}
+		for (k = 0; k < this.n; k++)
+			for (l = 0; l < this.m; l++) {
+				if (k == l) {
+					hasil = hasil * this.mat[k][l]* Math.pow(-1, reverse);
+
+				}
+			}
+		return hasil;
+	}
+
 }
 
