@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Formatter;
 import java.io.*;
 
 public class matrix {
@@ -12,16 +13,19 @@ public class matrix {
 		for (int i = 0; i < 1000; i++) for (int j = 0; j < 1000; j++) mat[i][j] = 0;
 	}
 
-	//* READING MATRIX *//
-	public void read() {
-		System.out.printf("Masukan Matriks:\n1. Keyboard\n2. File\nPilihan:");
+	//* I/O MATRIX *//
+	//Functions to call: read(), outFloat(), outPers();
+	
+	//if augmented, k=1 (SPL), else if det/inv, k=0;
+	public void read(int k){ 
+		System.out.printf("Masukan Matriks:\n1. Keyboard\n2. File\nPilihan: ");
 		int choice = this.in.nextInt();
 		in.nextLine(); //eats newline
 		if (choice == 1) this.readKey();
-		else if (choice == 2) this.readFile(); //temporary
+		else if (choice == 2) this.readFile(k); 
 		else {
 			System.out.printf("Masukan tidak valid\n");
-			this.read();
+			this.read(k);
 		}
 	}
 
@@ -36,11 +40,11 @@ public class matrix {
 		for (int i = 0; i < this.n; i++)
 			for (int j = 0; j < this.m; j++) {
 				this.mat[i][j] = this.in.nextFloat();
-				in.nextLine(); //same
 			}
+		in.nextLine();//eats newline
 	}
 
-	void readFile() {
+	void readFile(int k) {
 		System.out.printf("Masukkan nama atau path file:\n");
 		String file = this.in.nextLine();
 		try {
@@ -53,8 +57,132 @@ public class matrix {
 				i++;
 			}
 			this.n = i;
-			this.m = i + 1;
+			this.m = i + k;
 			filein.close();
+		} catch (FileNotFoundException ex) {
+			System.out.printf("File not found\n"); //loops back to drvier
+		}
+	}
+	
+	//basically just for determinants
+	public void outFloat(double n){
+		System.out.printf("Keluaran Matriks:\n1. Keyboard\n2. File\nPilihan: ");
+		int choice = this.in.nextInt();
+		in.nextLine(); //eats newline
+		if (choice == 1) this.outFloatKey(n);
+		else if (choice == 2) this.outFloatFile(n); 
+		else {
+			System.out.printf("Masukan tidak valid\n");
+			this.outFloat(n);
+		}
+	}
+		
+	
+	void outFloatKey(double n){
+		System.out.printf("%f\n",n);
+	}
+	
+	void outFloatFile(double n){
+		System.out.printf("Masukkan nama atau path file:\n");
+		String file = this.in.nextLine();
+		try {
+			Formatter fileout = new Formatter(file);
+			fileout.format("%f\n",n);
+			fileout.close();
+		} catch (FileNotFoundException ex) {
+			System.out.printf("File not found\n"); //loops back to drvier
+		}
+	}
+	
+	public void outPers(){
+		System.out.printf("Keluaran Matriks:\n1. Keyboard\n2. File\nPilihan: ");
+		int choice = this.in.nextInt();
+		in.nextLine(); //eats newline
+		if (choice == 1) this.outPersKey();
+		else if (choice == 2) this.outPersFile(); 
+		else {
+			System.out.printf("Masukan tidak valid\n");
+			this.outPers();
+		}
+	}
+	
+	void outPersKey(){
+		gaussJordan();
+		int z=this.n-1;
+		for (;z>=0;z--){
+			int j=0;
+			while(this.mat[z][j]<0.00001&&j<this.m)j++;
+			
+			//handling baris 0
+			if(j==this.m-1&&this.mat[z][j]!=0){
+				System.out.println("Tidak ada solusi");
+				return;
+			} else if(j==this.m-1&&this.mat[z][j]==0){
+				continue;
+			}
+			if(j<this.m-1)break;
+		}
+		if(z==-1)System.out.printf("Tidak ada solusi\n");
+		for(int i=0;i<=z;i++){
+			int j=0;
+			while(this.mat[i][j]<0.00001&&j<this.m)j++;
+			//All other cases
+			boolean yes=false;
+			System.out.printf("x_%d = ",j+1);
+			for(j++;j<this.m-1;j++){
+				if(this.mat[i][j]!=0)yes=true;
+				//FORMATIING 
+				if(this.mat[i][j]<0)System.out.printf("+ %.3f*x_%d ",-1*this.mat[i][j],j+1);
+				if(this.mat[i][j]>0)System.out.printf("- %.3f*x_%d ",this.mat[i][j],j+1);
+			}
+			if(yes&&this.mat[i][this.m-1]==0)System.out.println();
+			else if(yes&&this.mat[i][this.m-1]>0)System.out.printf("+ %.3f\n",this.mat[i][j]);
+			else if(yes&&this.mat[i][this.m-1]<0)System.out.printf("- %.3f\n",-1*this.mat[i][j]);
+			else if(this.mat[i][this.m-1]==0)System.out.printf("0\n");
+			else System.out.printf("%.3f\n",this.mat[i][j]);
+		}
+	}
+	
+	void outPersFile(){
+		System.out.printf("Masukkan nama atau path file:\n");
+		String file = this.in.nextLine();
+		try{
+			Formatter fileout = new Formatter(file);
+			gaussJordan();
+			int z=this.n-1;
+			for (;z>=0;z--){
+				int j=0;
+				while(this.mat[z][j]<0.00001&&j<this.m)j++;
+				
+				//handling baris 0
+				if(j==this.m-1&&this.mat[z][j]!=0){
+					fileout.format("Tidak ada solusi\n");
+					return;
+				} else if(j==this.m-1&&this.mat[z][j]==0){
+					continue;
+				}
+				if(j<this.m-1)break;
+			}
+			if(z==-1)fileout.format("Tidak ada solusi\n");
+			for(int i=0;i<=z;i++){
+				int j=0;
+				while(this.mat[i][j]<0.00001&&j<this.m)j++;
+				//All other cases
+				boolean yes=false;
+				fileout.format("x_%d = ",j+1);
+				for(j++;j<this.m-1;j++){
+					if(this.mat[i][j]!=0)yes=true;
+					//FORMATIING 
+					if(this.mat[i][j]<0)fileout.format("+ %.3f*x_%d ",-1*this.mat[i][j],j+1);
+					if(this.mat[i][j]>0)fileout.format("- %.3f*x_%d ",this.mat[i][j],j+1);
+				}
+				if(yes&&this.mat[i][this.m-1]==0)fileout.format("\n");
+				else if(yes&&this.mat[i][this.m-1]>0)fileout.format("+ %.3f\n",this.mat[i][j]);
+				else if(yes&&this.mat[i][this.m-1]<0)fileout.format("- %.3f\n",-1*this.mat[i][j]);
+				else if(this.mat[i][this.m-1]==0)fileout.format("0\n");
+				else fileout.format("%.3f\n",this.mat[i][j]);
+			}
+			fileout.close();
 		} catch (FileNotFoundException ex) {
 			System.out.printf("File not found\n"); //loops back to drvier
 		}
@@ -230,7 +358,7 @@ public class matrix {
 			}
 	}
 
-	double determinanOBE() {
+	public double determinanOBE() {
 		int bar = 0;
 		int kol = 0;
 		int[] idxNotZero;
