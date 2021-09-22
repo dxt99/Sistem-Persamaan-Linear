@@ -22,6 +22,38 @@ public class Main{
             System.out.print("Pilihan tidak tersedia. Masukkan angka antara 1-6: ");
             pilihan = in.nextInt();
         }
+        int metode;
+        if (pilihan==1) {
+            System.out.println("Daftar Metode");
+            System.out.println("1. Metode Eliminasi Gauss");
+            System.out.println("2. Metode Eliminasi Gauss-Jordan");
+            System.out.print("Silahkan pilih metode penyelesaian: ");
+            metode = in.nextInt();
+            while (metode < 1 || metode > 2) {
+                System.out.print("Pilihan tidak tersedia. Masukkan angka antara 1-2: ");
+                metode = in.nextInt();
+            }
+        }else if(pilihan==2) {
+            System.out.println("Daftar Metode");
+            System.out.println("1. Metode Operasi Baris Elementer");
+            System.out.println("2. Metode Kofaktor");
+            System.out.print("Silahkan pilih metode penyelesaian: ");
+            metode = in.nextInt();
+            while (metode < 1 || metode > 2) {
+                System.out.print("Pilihan tidak tersedia. Masukkan angka antara 1-2: ");
+                metode = in.nextInt();
+            }
+        }else if(pilihan==3) {
+            System.out.println("Daftar Metode");
+            System.out.println("1. Metode Gauss-Jordan");
+            System.out.println("2. Metode Kofaktor");
+            System.out.print("Silahkan pilih metode penyelesaian: ");
+            metode = in.nextInt();
+            while (metode < 1 || metode > 2) {
+                System.out.print("Pilihan tidak tersedia. Masukkan angka antara 1-2: ");
+                metode = in.nextInt();
+            }
+        }
     }
 
 }
