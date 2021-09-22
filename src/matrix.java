@@ -371,8 +371,10 @@ public class matrix {
 			if (idxNotZero[0] == -1) {
 				bar = this.n;
 			} else {
+				if (bar!=idxNotZero[0]){
+					reverse += 1;
+				}
 				tukarBaris(bar, idxNotZero[0]);
-				reverse += 1;
 				kol = idxNotZero[1]; //next kol
 				for (i = bar + 1; i <= this.n - 1; i++) {
 					if (this.mat[i][kol] != 0) {
