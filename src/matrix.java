@@ -393,6 +393,148 @@ public class matrix {
 			}
 		return hasil;
 	}
+	
+	public void inversOBE() {
+
+		double[][] id = new double[1000][1000];
+		int barId, kolId;
+		int i, j, k;
+		double denom, x;
+
+		barId= this.n;
+		kolId = this.m;
+
+		// Identitas
+		for (i=0; i<=barId-1; i++){
+			for (j=0; j<=kolId-1; j++){
+				if (i==j){
+					id[i][j] = 1;
+				} else {
+					id[i][j] = 0;
+				}
+			}
+		}
+
+		// Fase Maju
+		for (i=0; i<=barId-1; i++){
+			denom = this.mat[i][i];
+			for (j=0; j<=kolId; j++){
+				this.mat[i][j] /= denom;
+				id[i][j] /= denom;
+			}
+			for (j=i+1; j<=barId-1; j++){
+				if (this.mat[j][i] != 0){
+					x = (-1*this.mat[j][i]/this.mat[i][i]);
+					for (k=0; k<=kolId-1; k++){
+						this.mat[j][k] += this.mat[i][k] * x;
+						id[j][k] += id[i][k] * x;
+					}
+				}
+			}
+		}
+
+		// Fase Mundur
+		for (i=0; i<=barId-1; i++){
+			for (j=0; j<=barId-1; j++){
+				if (this.mat[j][i]!=0 && i!=j){
+					x = (-1*this.mat[j][i]/this.mat[i][i]);
+					for (k=0; k<=kolId-1; k++){
+						this.mat[j][k] += this.mat[i][k] * x;
+						id[j][k] += id[i][k] * x;
+					}
+				}
+			}
+		}
+
+		// Copy id to this.mat
+		for (i=0; i<=barId-1; i++) {
+			for (j = 0; j <= kolId; j++) {
+				this.mat[i][j] = id[i][j];
+				if (this.mat[i][j] == -0) {
+					this.mat[i][j] = 0;
+				}
+			}
+		}
+
+	}
+
+	// Inisialisasi Matriks
+	matrix inisialisasiM(int nBar, int nKol){
+		matrix m = new matrix();
+		int i, j;
+		for (i=0; i<=nBar-1; i++){
+			for (j=0; j<=nKol-1; j++){
+				m.mat[i][j] = 0;
+			}
+		}
+		return m;
+	}
+	
+	public void inversKofaktor(){
+
+		matrix kofaktor = new matrix();
+		matrix mtemp = new matrix();
+		int i, j, ireal, jreal, itemp, jtemp, bar, kol;
+		double det;
+		int iz, jz;
+
+		bar = this.n;
+		kol = this.m;
+
+		// Inisialisasi matriks kofaktor
+		kofaktor = inisialisasiM(bar, kol);
+		kofaktor.n = bar;
+		kofaktor.m = kol;
+
+		for (i=0; i<=bar-1; i++) {
+			for (j = 0; j <= kol - 1; j++) {
+				mtemp = inisialisasiM(bar - 1, kol - 1);
+				mtemp.n = bar-1;
+				mtemp.m = kol-1;
+				ireal = 0;
+				jreal = 0;
+				itemp = 0;
+				jtemp = 0;
+				while (itemp <= bar - 2) {
+					while (jtemp <= kol - 2) {
+						if (ireal == i) {
+							ireal += 1;
+						}
+						if (jreal == j) {
+							jreal += 1;
+						}
+						mtemp.mat[itemp][jtemp] = this.mat[ireal][jreal];
+						jtemp += 1;
+						jreal += 1;
+					}
+					jtemp = 0;
+					jreal = 0;
+					itemp += 1;
+					ireal += 1;
+				}
+				if ((i + j) % 2 == 0) {
+					kofaktor.mat[i][j] = mtemp.determinanOBE();
+				} else {
+					kofaktor.mat[i][j] = (-1) * mtemp.determinanOBE();
+				}
+			}
+		}
+		kofaktor.transpose();
+		det = this.determinanOBE();
+		for (i=0; i<=bar-1; i++){
+			for (j=0; j<=kol-1; j++){
+				kofaktor.mat[i][j] /= det;
+			}
+		}
+
+		for (i=0; i<=bar-1; i++){
+			for (j=0; j<=kol-1; j++){
+				this.mat[i][j] = kofaktor.mat[i][j];
+			}
+		}
+
+
+	}
 
 }
 
