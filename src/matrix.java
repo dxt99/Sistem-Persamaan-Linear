@@ -393,6 +393,53 @@ public class matrix {
 			}
 		return hasil;
 	}
+
+	public double determinanKofaktor(){
+
+		int j, itemp, jtemp, ireal, jreal, bar, kol;
+		matrix mtemp = new matrix();
+		double temp;
+
+		bar = this.n;
+		kol = this.m;
+
+		if (bar == 1 && kol == 1){
+			temp = this.mat[0][0];
+		} else if (bar == 2 && kol == 2){
+			temp = (this.mat[0][0] * this.mat[1][1]) - (this.mat[0][1] * this.mat[1][0]);
+		} else {
+			temp = 0;
+			for (j=0; j<=kol-1; j++){
+				mtemp = inisialisasiM(bar-1, kol-1);
+				mtemp.n = bar-1;
+				mtemp.m = kol-1;
+				ireal = 1;
+				jreal = 0;
+				itemp = 0;
+				jtemp = 0;
+				while (itemp<=bar-2){
+					while (jtemp<=kol-2){
+						if(jreal == j){
+							jreal += 1;
+						}
+						mtemp.mat[itemp][jtemp] = this.mat[ireal][jreal];
+						jtemp += 1;
+						jreal += 1;
+					}
+					jtemp = 0;
+					jreal = 0;
+					itemp += 1;
+					ireal += 1;
+				}
+				if (j%2==0){
+					temp += this.mat[0][j]*mtemp.determinanKofaktor();
+				} else {
+					temp += (-1)*this.mat[0][j]*mtemp.determinanKofaktor();
+				}
+			}
+		}
+		return temp;
+	}
 	
 	public void inversOBE() {
 
