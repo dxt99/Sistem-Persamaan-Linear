@@ -579,7 +579,26 @@ public class matrix {
 				this.mat[i][j] = kofaktor.mat[i][j];
 			}
 		}
+	}
 
+	public matrix kaliMatrix(matrix m1, matrix m2) {
+
+		matrix m3 = new matrix();
+		m3.n = m1.n;
+		m3.m = m2.m;
+		int i, j, k;
+		
+		for (i=0; i<=m3.n-1; i++){
+			for (j=0; j<=m3.m-1; j++){
+				m3.mat[i][j] = 0;
+				for (k=0; k<=m1.m-1; k++){
+					m3.mat[i][j] += m1.mat[i][k] * m2.mat[k][j];
+				}
+			}
+		}
+		m3.display();
+
+		return m3;
 
 	}
 
