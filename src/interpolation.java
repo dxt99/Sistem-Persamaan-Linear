@@ -53,7 +53,7 @@ public class interpolation{
 			while(filein.hasNextFloat()){
 				this.x[i]=filein.nextFloat();
 				if(!filein.hasNextFloat()){
-					this.xtar=x[i];
+					this.xtar=this.x[i];
 					break;
 				}
 				this.y[i]=filein.nextFloat();
@@ -65,17 +65,6 @@ public class interpolation{
 		}catch(FileNotFoundException ex){
 			System.out.printf("File not found\n"); //loops back to drvier
 		}
-	}
-			
-			
-	
-	//for testing only, delete later
-	void display(){
-		for(int i=0;i<=this.n;i++){
-			System.out.printf("(%f,%f)\n",this.x[i],this.y[i]);
-		}
-		System.out.printf("%f\n",this.xtar);
-		System.out.printf("%d\n",this.n);
 	}
 	
 	matrix count(){
