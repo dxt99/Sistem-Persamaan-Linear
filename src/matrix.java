@@ -135,14 +135,14 @@ public class matrix {
 			for(j++;j<this.m-1;j++){
 				if(this.mat[i][j]!=0)yes=true;
 				//FORMATIING 
-				if(this.mat[i][j]<0)System.out.printf("+ %.3f*s_%d ",-1*this.mat[i][j],j+1);
-				if(this.mat[i][j]>0)System.out.printf("- %.3f*s_%d ",this.mat[i][j],j+1);
+				if(this.mat[i][j]<0)System.out.printf("+ %f*s_%d ",-1*this.mat[i][j],j+1);
+				if(this.mat[i][j]>0)System.out.printf("- %f*s_%d ",this.mat[i][j],j+1);
 			}
 			if(yes&&this.mat[i][this.m-1]==0)System.out.println();
-			else if(yes&&this.mat[i][this.m-1]>0)System.out.printf("+ %.3f\n",this.mat[i][j]);
-			else if(yes&&this.mat[i][this.m-1]<0)System.out.printf("- %.3f\n",-1*this.mat[i][j]);
+			else if(yes&&this.mat[i][this.m-1]>0)System.out.printf("+ %f\n",this.mat[i][j]);
+			else if(yes&&this.mat[i][this.m-1]<0)System.out.printf("- %f\n",-1*this.mat[i][j]);
 			else if(this.mat[i][this.m-1]==0)System.out.printf("0\n");
-			else System.out.printf("%.3f\n",this.mat[i][j]);
+			else System.out.printf("%f\n",this.mat[i][j]);
 			
 			if(yes){
 				j=0;
@@ -188,14 +188,14 @@ public class matrix {
 				for(j++;j<this.m-1;j++){
 					if(this.mat[i][j]!=0)yes=true;
 					//FORMATIING 
-					if(this.mat[i][j]<0)fileout.format("+ %.3f*s_%d ",-1*this.mat[i][j],j+1);
-					if(this.mat[i][j]>0)fileout.format("- %.3f*s_%d ",this.mat[i][j],j+1);
+					if(this.mat[i][j]<0)fileout.format("+ %f*s_%d ",-1*this.mat[i][j],j+1);
+					if(this.mat[i][j]>0)fileout.format("- %f*s_%d ",this.mat[i][j],j+1);
 				}
 				if(yes&&this.mat[i][this.m-1]==0)fileout.format("\n");
-				else if(yes&&this.mat[i][this.m-1]>0)fileout.format("+ %.3f\n",this.mat[i][j]);
-				else if(yes&&this.mat[i][this.m-1]<0)fileout.format("- %.3f\n",-1*this.mat[i][j]);
+				else if(yes&&this.mat[i][this.m-1]>0)fileout.format("+ %f\n",this.mat[i][j]);
+				else if(yes&&this.mat[i][this.m-1]<0)fileout.format("- %f\n",-1*this.mat[i][j]);
 				else if(this.mat[i][this.m-1]==0)fileout.format("0\n");
-				else fileout.format("%.3f\n",this.mat[i][j]);
+				else fileout.format("%f\n",this.mat[i][j]);
 				
 				if(yes){
 					j=0;
