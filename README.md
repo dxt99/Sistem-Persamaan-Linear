@@ -34,6 +34,6 @@ read(): reads n samples of size (n+1) each + 1 sample (of size n)
 
 out(): outputs equation and predicted value
 
-## issues:
+### issues:
 
 - not compatible with case study (sample size too large)
