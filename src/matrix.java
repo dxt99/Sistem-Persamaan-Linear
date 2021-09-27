@@ -14,7 +14,8 @@ public class matrix {
 	}
 
 	//* I/O MATRIX *//
-	//Functions to call: read(), outFloat(), outPers();
+	//Functions to call: read(), outFloat(), outPers(), outMat();
+	//outFloat untuk determinan, outPers untuk SPL, outMat untuk invers;
 	
 	//if augmented, k=1 (SPL), else if det/inv, k=0;
 	public void read(int k){ 
@@ -187,14 +188,41 @@ public class matrix {
 			System.out.printf("File not found\n"); //loops back to drvier
 		}
 	}
-
-	//testing only
-	public void display() {
+	
+	public void outMat(){
+		System.out.printf("Keluaran Matriks:\n1. Keyboard\n2. File\nPilihan: ");
+		int choice = this.in.nextInt();
+		in.nextLine(); //eats newline
+		if (choice == 1) this.outMatKey();
+		else if (choice == 2) this.outMatFile(); 
+		else {
+			System.out.printf("Masukan tidak valid\n");
+			this.outMat();
+		}
+	}
+	
+	void outMatKey() {
 		for (int i = 0; i < this.n; i++) {
 			for (int j = 0; j < this.m; j++) {
 				System.out.printf("%f ", this.mat[i][j]);
 			}
 			System.out.println();
+		}
+	}
+	
+	void outMatFile(){
+		System.out.printf("Masukkan nama atau path file:\n");
+		String file = this.in.nextLine();
+		try{
+			Formatter fileout = new Formatter(file);
+			for (int i = 0; i < this.n; i++) {
+				for (int j = 0; j < this.m; j++) {
+					fileout.format("%f ", this.mat[i][j]);
+				}
+				fileout.format("\n");
+			}
+		} catch (FileNotFoundException ex) {
+			System.out.printf("File not found\n"); //loops back to drvier
 		}
 	}
 
@@ -596,11 +624,8 @@ public class matrix {
 				}
 			}
 		}
-		m3.display();
-
 		return m3;
 
 	}
 
 }
-
