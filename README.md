@@ -1,10 +1,39 @@
 ## matrix.java:
 
+### public functions:
 
-### functions:
+read(k): k=1 reads augmented matrix, k=0 reads square matrix;
 
-I/O: read, readKey, readFile, outFloatKey, outFloatFile, outPersKey, outPersFile
+outFloat(k): outputs k(float)
 
-Operasi: tukarBaris, tukarKolom, kaliX, tambahBaris, 
+outMat(): outputs this.mat (entire matrix)
 
-Function: gauss, transpose, gaussJordan, linInv (SPL dgn invers), cramer, detGauss, detKof, invOBE, invKof
+outPers(): outputs matrix equation solution (make sure this is augmented)
+
+### issues:
+
+- library(?)
+
+## interpolation.java:
+
+### public functions:
+
+read(): reads points
+
+out(): outputs polynomial and predicted value
+
+### issues:
+
+- might not be able to produce a polynomial (bad input)
+
+## regression.java:
+
+### public functions:
+
+read(): reads n samples of size (n+1) each + 1 sample (of size n)
+
+out(): outputs equation and predicted value
+
+## issues:
+
+- not compatible with case study (sample size too large)
