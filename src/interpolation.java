@@ -141,8 +141,8 @@ public class interpolation{
 				else if(i==0)System.out.printf("%fx^%d ",m.mat[i][m.m-1],j);
 				else if(m.mat[i][m.m-1]>0&&j==1)System.out.printf("+ %fx ",m.mat[i][m.m-1]);
 				else if(m.mat[i][m.m-1]<0&&j==1)System.out.printf("- %fx ",-1*m.mat[i][m.m-1]);
-				else if(m.mat[i][m.m-1]>0)System.out.printf("+ %fx^%d",m.mat[i][m.m-1],j);
-				else if(m.mat[i][m.m-1]<0)System.out.printf("- %fx^%d",-1*m.mat[i][m.m-1],j);
+				else if(m.mat[i][m.m-1]>0)System.out.printf("+ %fx^%d ",m.mat[i][m.m-1],j);
+				else if(m.mat[i][m.m-1]<0)System.out.printf("- %fx^%d ",-1*m.mat[i][m.m-1],j);
 				ans+=(var*m.mat[i][m.m-1]);
 			}
 			System.out.printf("\nNilai taksiran %f adalah: %f\n",this.xtar,ans);
@@ -199,8 +199,8 @@ public class interpolation{
 					else if(i==0)fileout.format("%fx^%d ",m.mat[i][m.m-1],j);
 					else if(m.mat[i][m.m-1]>0&&j==1)fileout.format("+ %fx ",m.mat[i][m.m-1]);
 					else if(m.mat[i][m.m-1]<0&&j==1)fileout.format("- %fx ",-1*m.mat[i][m.m-1]);
-					else if(m.mat[i][m.m-1]>0)fileout.format("+ %fx^%d",m.mat[i][m.m-1],j);
-					else if(m.mat[i][m.m-1]<0)fileout.format("- %fx^%d",-1*m.mat[i][m.m-1],j);
+					else if(m.mat[i][m.m-1]>0)fileout.format("+ %fx^%d ",m.mat[i][m.m-1],j);
+					else if(m.mat[i][m.m-1]<0)fileout.format("- %fx^%d ",-1*m.mat[i][m.m-1],j);
 					ans+=(var*m.mat[i][m.m-1]);
 				}
 				fileout.format("\nNilai taksiran %f adalah: %f\n",this.xtar,ans);
