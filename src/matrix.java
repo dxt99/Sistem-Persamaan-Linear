@@ -110,6 +110,8 @@ public class matrix {
 	void outPersKey(){
 		gaussJordan();
 		int z=this.n-1;
+		boolean[] done=new boolean[this.n];
+		for(int i=0;i<this.n;i++)done[i]=false;
 		for (;z>=0;z--){
 			int j=0;
 			while(this.mat[z][j]<0.00001&&j<this.m)j++;
@@ -133,14 +135,24 @@ public class matrix {
 			for(j++;j<this.m-1;j++){
 				if(this.mat[i][j]!=0)yes=true;
 				//FORMATIING 
-				if(this.mat[i][j]<0)System.out.printf("+ %.3f*x_%d ",-1*this.mat[i][j],j+1);
-				if(this.mat[i][j]>0)System.out.printf("- %.3f*x_%d ",this.mat[i][j],j+1);
+				if(this.mat[i][j]<0)System.out.printf("+ %.3f*s_%d ",-1*this.mat[i][j],j+1);
+				if(this.mat[i][j]>0)System.out.printf("- %.3f*s_%d ",this.mat[i][j],j+1);
 			}
 			if(yes&&this.mat[i][this.m-1]==0)System.out.println();
 			else if(yes&&this.mat[i][this.m-1]>0)System.out.printf("+ %.3f\n",this.mat[i][j]);
 			else if(yes&&this.mat[i][this.m-1]<0)System.out.printf("- %.3f\n",-1*this.mat[i][j]);
 			else if(this.mat[i][this.m-1]==0)System.out.printf("0\n");
 			else System.out.printf("%.3f\n",this.mat[i][j]);
+			
+			if(yes){
+				j=0;
+				while(this.mat[i][j]<0.00001&&j<this.m)j++;
+				for(j++;j<this.m-1;j++){
+					if(this.mat[i][j]!=0&&!done[j])System.out.printf("x_%d = s_%d\n",j+1,j+1);
+					done[j]=true;
+				}
+			}
+				
 		}
 	}
 	
@@ -151,6 +163,8 @@ public class matrix {
 			Formatter fileout = new Formatter(file);
 			gaussJordan();
 			int z=this.n-1;
+			boolean[] done= new boolean[this.n];
+			for(int i=0;i<this.n;i++)done[i]=false;
 			for (;z>=0;z--){
 				int j=0;
 				while(this.mat[z][j]<0.00001&&j<this.m)j++;
@@ -174,14 +188,23 @@ public class matrix {
 				for(j++;j<this.m-1;j++){
 					if(this.mat[i][j]!=0)yes=true;
 					//FORMATIING 
-					if(this.mat[i][j]<0)fileout.format("+ %.3f*x_%d ",-1*this.mat[i][j],j+1);
-					if(this.mat[i][j]>0)fileout.format("- %.3f*x_%d ",this.mat[i][j],j+1);
+					if(this.mat[i][j]<0)fileout.format("+ %.3f*s_%d ",-1*this.mat[i][j],j+1);
+					if(this.mat[i][j]>0)fileout.format("- %.3f*s_%d ",this.mat[i][j],j+1);
 				}
 				if(yes&&this.mat[i][this.m-1]==0)fileout.format("\n");
 				else if(yes&&this.mat[i][this.m-1]>0)fileout.format("+ %.3f\n",this.mat[i][j]);
 				else if(yes&&this.mat[i][this.m-1]<0)fileout.format("- %.3f\n",-1*this.mat[i][j]);
 				else if(this.mat[i][this.m-1]==0)fileout.format("0\n");
 				else fileout.format("%.3f\n",this.mat[i][j]);
+				
+				if(yes){
+					j=0;
+					while(this.mat[i][j]<0.00001&&j<this.m)j++;
+					for(j++;j<this.m-1;j++){
+						if(this.mat[i][j]!=0&&!done[j])fileout.format("x_%d = s_%d\n",j+1,j+1);
+						done[j]=true;
+					}
+				}
 			}
 			fileout.close();
 		} catch (FileNotFoundException ex) {
