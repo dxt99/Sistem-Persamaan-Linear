@@ -671,7 +671,7 @@ public class matrix {
 	matrix A = new matrix();
 	matrix b = new matrix();
 	for(int i=0; i<=(m1.n-1); i++){
-		for(int j=0; i<(m1.m-1); j++){
+		for(int j=0; j<(m1.m-1); j++){
 			A.mat[i][j] = m1.mat[i][j];
 		}
 	}
