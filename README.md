@@ -14,8 +14,6 @@ outPers(): outputs matrix equation solution (make sure this is augmented)
 
 - library(?)
 
-- gauss jordan call sometimes does not return leading ones (requires two calls)
-
 ## interpolation.java:
 
 ### public functions:
@@ -26,8 +24,6 @@ out(): outputs polynomial and predicted value
 
 ### issues:
 
-- might not be able to produce a polynomial (bad input)
-
 ## regression.java:
 
 ### public functions:
@@ -37,5 +33,3 @@ read(): reads n samples of size (n+1) each + 1 sample (of size n)
 out(): outputs equation and predicted value
 
 ### issues:
-
-- gauss jordan call sometimes does not return leading ones (requires two calls)
