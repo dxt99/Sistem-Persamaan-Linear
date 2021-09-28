@@ -358,7 +358,7 @@ public class matrix {
 		while (bar <= this.n - 1) {
 			done = false;
 			while (kol <= this.m - 1 && !done) {
-				if (this.mat[bar][kol] >= 0.000001) {
+				if (this.mat[bar][kol] >= 0.000001||this.mat[bar][kol]<=-0.000001) {
 					kaliX(bar, 1 / this.mat[bar][kol]);
 					done = true;
 				} else {

@@ -43,13 +43,12 @@ public class Main{
                 m1.read(1);
                 if (metode == 1) {
                     m1.gauss();
-                    if (!(m1.n == 0 && m1.m == 0)){
+                    if (!(m1.n == 0 || m1.m == 0)){
                         m1.outPers();
                     }
-                    m1.outPers();
                 } else if (metode == 2) {
                     m1.gaussJordan();
-                    if (!(m1.n == 0 && m1.m == 0)){
+                    if (!(m1.n == 0 || m1.m == 0)){
                         m1.outPers();
                     }
                 } else if (metode == 3) {
@@ -69,9 +68,9 @@ public class Main{
                     metode = in.nextInt();
                 }
                 m1.read(0);
-                if ((metode == 1) && (!(m1.n == 0 && m1.m == 0))){
+                if ((metode == 1) && (!(m1.n == 0 || m1.m == 0))){
                     m1.outFloat(m1.determinanOBE());
-                } else if ((metode == 2) && (!(m1.n == 0 && m1.m == 0))){
+                } else if ((metode == 2) && (!(m1.n == 0 || m1.m == 0))){
                     m1.outFloat(m1.determinanKofaktor());
                 }
 //========================INVERS=========================================
@@ -88,12 +87,12 @@ public class Main{
                 m1.read(0);
                 if (metode == 1){
                     m1.inversOBE();
-                    if ((!(m1.n == 0 && m1.m == 0))) {
+                    if ((!(m1.n == 0 || m1.m == 0))) {
                         m1.outMat();
                     }
                 } else if (metode == 2){
                     m1.inversKofaktor();
-                    if (!(m1.n == 0 && m1.m == 0)) {
+                    if (!(m1.n == 0 || m1.m == 0)) {
                         m1.outMat();
                     }
                 }
