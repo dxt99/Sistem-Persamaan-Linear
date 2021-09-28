@@ -6,7 +6,8 @@ public class regression{
 	double[][] x = new double[1000][1000];
 	double[] xtar = new double[1000];
 	double[] y = new double[1000];
-	int n=0;
+	int n=0; //variables
+	int s=0; //samples
 	Scanner in = new Scanner(System.in);
 	
 	//constructor
@@ -37,8 +38,11 @@ public class regression{
 		System.out.printf("Masukkan n (jumlah peubah x): ");
 		this.n=this.in.nextInt();
 		in.nextLine(); //eats newline
+		System.out.printf("Masukkan banyak sampel: ");
+		this.s=this.in.nextInt();
+		in.nextLine();
 		System.out.printf("Masukkan x1i,...,xni,yi:\n");
-		for(int i=1;i<=this.n;i++){
+		for(int i=1;i<=this.s;i++){
 			for(int j=1;j<=this.n;j++){
 				this.x[j][i]=this.in.nextFloat();
 			}
@@ -67,6 +71,7 @@ public class regression{
 				this.y[i]=Double.parseDouble(temp[this.n]);
 				i++;
 			}
+			this.s=i-1;
 			filein.close();
 		}catch(FileNotFoundException ex){
 			System.out.printf("File not found\n"); //loops back to drvier
@@ -80,12 +85,12 @@ public class regression{
 		for(int i=0;i<m.n;i++){
 			for(int j=0;j<m.m-1;j++){
 				m.mat[i][j]=0;
-				for(int k=1;k<=this.n;k++){
+				for(int k=1;k<=this.s;k++){
 					m.mat[i][j]+=(this.x[i][k]*this.x[j][k]);
 				}
 			}
 			m.mat[i][m.m-1]=0;
-			for(int k=1;k<=this.n;k++)m.mat[i][m.m-1]+=(this.x[i][k]*this.y[k]);
+			for(int k=1;k<=this.s;k++)m.mat[i][m.m-1]+=(this.x[i][k]*this.y[k]);
 		}
 		m.gaussJordan();
 		return m;
@@ -105,6 +110,7 @@ public class regression{
 	
 	void outKey(){
 		matrix m=count();
+		m.gaussJordan();
 		int z=m.n-1;
 		for (;z>=0;z--){
 			int j=0;
@@ -154,6 +160,7 @@ public class regression{
 	
 	void outFile(){
 		matrix m=count();
+		m.gaussJordan();
 		int z=m.n-1;
 		System.out.printf("Masukkan nama atau path file:\n");
 		String file = this.in.nextLine();
