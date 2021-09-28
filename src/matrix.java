@@ -30,13 +30,20 @@ public class matrix {
 		}
 	}
 
-	void readKey() {
-		System.out.printf("Masukkan banyak baris: ");
-		this.n = this.in.nextInt();
-		in.nextLine(); //eats newline
-		System.out.printf("Masukkan banyak kolom: ");
-		this.m = this.in.nextInt(); //m should be n+1
-		in.nextLine(); //same
+	void readKey(int k) {
+		if(k==1){
+			System.out.printf("Masukkan banyak baris: ");
+			this.n = this.in.nextInt();
+			in.nextLine(); //eats newline
+			System.out.printf("Masukkan banyak kolom: ");
+			this.m = this.in.nextInt(); //m should be n+1
+			in.nextLine(); //same
+		}else{
+			System.out.printf("Masukkan banyak baris/kolom: ");
+			this.n = this.in.nextInt();
+			in.nextLine(); //same
+			this.m=this.n;
+		}
 		System.out.printf("Masukkan matriks:\n");
 		for (int i = 0; i < this.n; i++)
 			for (int j = 0; j < this.m; j++) {
