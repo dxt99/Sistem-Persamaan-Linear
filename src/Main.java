@@ -6,7 +6,9 @@ public class Main{
 
         matrix m1 = new matrix();
         matrix mh = new matrix();
+        interpolation i1 = new interpolation();
         int pilihan = 0;
+        int metode;
 
         Scanner in = new Scanner(System.in);
 
@@ -25,7 +27,7 @@ public class Main{
                 System.out.print("Pilihan tidak tersedia. Masukkan angka antara 1-6: ");
                 pilihan = in.nextInt();
             }
-            int metode;
+//========================SPL=========================================
             if (pilihan == 1) {
                 System.out.println("Daftar Metode");
                 System.out.println("1. Metode eliminasi Gauss");
@@ -41,16 +43,21 @@ public class Main{
                 m1.read(1);
                 if (metode == 1) {
                     m1.gauss();
+                    if (!(m1.n == 0 && m1.m == 0)){
+                        m1.outPers();
+                    }
                     m1.outPers();
                 } else if (metode == 2) {
                     m1.gaussJordan();
-                    m1.outPers();
+                    if (!(m1.n == 0 && m1.m == 0)){
+                        m1.outPers();
+                    }
                 } else if (metode == 3) {
                     // processing
                 } else if (metode == 4) {
                     // processing
                 }
-
+//========================Determinan=========================================
             } else if (pilihan == 2) {
                 System.out.println("Daftar Metode");
                 System.out.println("1. Metode Operasi Baris Elementer");
@@ -62,11 +69,12 @@ public class Main{
                     metode = in.nextInt();
                 }
                 m1.read(0);
-                if (metode == 1){
+                if ((metode == 1) && (!(m1.n == 0 && m1.m == 0))){
                     m1.outFloat(m1.determinanOBE());
-                } else if (metode == 2){
+                } else if ((metode == 2) && (!(m1.n == 0 && m1.m == 0))){
                     m1.outFloat(m1.determinanKofaktor());
                 }
+//========================INVERS=========================================
             } else if (pilihan == 3) {
                 System.out.println("Daftar Metode");
                 System.out.println("1. Metode Gauss-Jordan");
@@ -80,13 +88,21 @@ public class Main{
                 m1.read(0);
                 if (metode == 1){
                     m1.inversOBE();
-                    m1.outMat();
+                    if ((!(m1.n == 0 && m1.m == 0))) {
+                        m1.outMat();
+                    }
                 } else if (metode == 2){
                     m1.inversKofaktor();
-                    m1.outMat();
+                    if (!(m1.n == 0 && m1.m == 0)) {
+                        m1.outMat();
+                    }
                 }
+//========================INTERPOLASI=========================================
             } else if (pilihan == 4){
-                // process
+                i1.read();
+                i1.count();
+                i1.out();
+//========================REGRESI=========================================
             } else if (pilihan == 5){
                 // process
             }
