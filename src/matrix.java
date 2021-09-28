@@ -666,5 +666,24 @@ public class matrix {
 		return m3;
 
 	}
+	
+	public matrix splInvers(matrix m1){
+	matrix A = new matrix();
+	matrix b = new matrix();
+	for(int i=0; i<=(m1.n-1); i++){
+		for(int j=0; i<(m1.m-1); j++){
+			A.mat[i][j] = m1.mat[i][j];
+		}
+	}
+	for(int i=0; i<=(m1.n-1); i++){
+		int j = m1.m-1;
+		b.mat[i][j] = m1.mat[i][j];
+	}
+
+	matrix hasil = new matrix();
+	A.inversOBE();
+	hasil = kaliMatrix(A, b);
+	return hasil;
+	}
 
 }
