@@ -22,7 +22,7 @@ public class matrix {
 		System.out.printf("Masukan Matriks:\n1. Keyboard\n2. File\nPilihan: ");
 		int choice = this.in.nextInt();
 		in.nextLine(); //eats newline
-		if (choice == 1) this.readKey();
+		if (choice == 1) this.readKey(k);
 		else if (choice == 2) this.readFile(k); 
 		else {
 			System.out.printf("Masukan tidak valid\n");
@@ -53,9 +53,11 @@ public class matrix {
 	}
 
 	void readFile(int k) {
-		System.out.printf("Masukkan nama atau path file:\n");
+		System.out.printf("Masukkan nama file:\n");
 		String file = this.in.nextLine();
 		try {
+			File f = new File(file);
+			if(!f.exists())file="../test/input/"+file;
 			Scanner filein = new Scanner(new FileReader(file));
 			int i = 0;
 			while (filein.hasNextLine()) {
@@ -91,8 +93,9 @@ public class matrix {
 	}
 	
 	void outFloatFile(double n){
-		System.out.printf("Masukkan nama atau path file:\n");
+		System.out.printf("Masukkan nama file:\n");
 		String file = this.in.nextLine();
+		file="../test/output/"+file;
 		try {
 			Formatter fileout = new Formatter(file);
 			fileout.format("%f\n",n);
@@ -164,8 +167,9 @@ public class matrix {
 	}
 	
 	void outPersFile(){
-		System.out.printf("Masukkan nama atau path file:\n");
+		System.out.printf("Masukkan nama file:\n");
 		String file = this.in.nextLine();
+		file="../test/output/"+file;
 		try{
 			Formatter fileout = new Formatter(file);
 			gaussJordan();
@@ -241,8 +245,9 @@ public class matrix {
 	}
 	
 	void outMatFile(){
-		System.out.printf("Masukkan nama atau path file:\n");
+		System.out.printf("Masukkan nama file:\n");
 		String file = this.in.nextLine();
+		file="../test/output/"+file;
 		try{
 			Formatter fileout = new Formatter(file);
 			for (int i = 0; i < this.n; i++) {

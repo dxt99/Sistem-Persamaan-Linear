@@ -45,8 +45,9 @@ public class interpolation{
 	}
 	
 	void readFile(){
-		System.out.printf("Masukkan nama atau path file:\n");
+		System.out.printf("Masukkan nama file:\n");
 		String file=this.in.nextLine();
+		file="../test/input/"+file;
 		try{
 			Scanner filein = new Scanner(new FileReader(file));
 			int i=0;
@@ -152,8 +153,9 @@ public class interpolation{
 	void outFile(){
 		matrix m=count();
 		int z=m.n-1;
-		System.out.printf("Masukkan nama atau path file:\n");
+		System.out.printf("Masukkan nama file:\n");
 		String file = this.in.nextLine();
+		file="../test/output/"+file;
 		try{
 			Formatter fileout = new Formatter(file);
 				for (;z>=0;z--){
