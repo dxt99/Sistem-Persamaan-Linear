@@ -7,7 +7,7 @@ public class interpolation{
 	double[] y= new double[1000];
 	double xtar;
 	int n = 0; //interpolation degree
-	Scanner in = new Scanner(System.in).useLocale(Locale.US);
+	Scanner in = new Scanner(System.in);
 	
 	//constructor
 	interpolation(){
