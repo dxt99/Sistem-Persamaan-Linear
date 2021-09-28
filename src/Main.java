@@ -7,6 +7,7 @@ public class Main{
         matrix m1 = new matrix();
         matrix mh = new matrix();
         interpolation i1 = new interpolation();
+        regression r1 = new regression();
         int pilihan = 0;
         int metode;
 
@@ -52,7 +53,10 @@ public class Main{
                         m1.outPers();
                     }
                 } else if (metode == 3) {
-                    // processing
+                    mh = m1.splInvers(m1);
+                    if (!(m1.n == 0 || m1.m == 0)){
+                        mh.outPers();               // Tidak ada solusi
+                    }
                 } else if (metode == 4) {
                     // processing
                 }
@@ -99,11 +103,11 @@ public class Main{
 //========================INTERPOLASI=========================================
             } else if (pilihan == 4){
                 i1.read();
-                i1.count();
                 i1.out();
 //========================REGRESI=========================================
             } else if (pilihan == 5){
-                // process
+                r1.read();
+                r1.out();
             }
         }
     }
