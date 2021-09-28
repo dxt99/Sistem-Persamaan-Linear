@@ -14,6 +14,8 @@ outPers(): outputs matrix equation solution (make sure this is augmented)
 
 - library(?)
 
+- gauss jordan call sometimes does not return leading ones (requires two calls)
+
 ## interpolation.java:
 
 ### public functions:
@@ -36,4 +38,4 @@ out(): outputs equation and predicted value
 
 ### issues:
 
-- not compatible with case study (sample size too large)
+- gauss jordan call sometimes does not return leading ones (requires two calls)
