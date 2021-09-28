@@ -684,6 +684,36 @@ public class matrix {
 		A.inversOBE();
 		hasil = kaliMatrix(A, b);
 		return hasil;
+	}
+
+	public matrix splCramer(matrix m1) {
+		matrix A = new matrix();
+		matrix b = new matrix();
+		for (int i = 0; i <= (m1.n - 1); i++) {
+			for (int j = 0; j < (m1.m - 1); j++) {
+				A.mat[i][j] = m1.mat[i][j];
+			}
 		}
+		for (int i = 0; i <= (m1.n - 1); i++) {
+			int j = (m1.m) - 1;
+			b.mat[i][j] = m1.mat[i][j];
+		}
+		double det = A.determinanKofaktor();
+
+		matrix hasil = new matrix();
+
+		for (int i=0; i<=(A.m-1); i++){
+			for(int j=0; j<=(A.n-1); j++) {
+				A.mat[j][i] = b.mat[j][0];
+			}
+			double det_x = A.determinanKofaktor();
+			int k = 0;
+			hasil.mat[k][0] = det_x/det;
+			k += 1;
+		}
+		return hasil;
+	}
 
 }
+
+
