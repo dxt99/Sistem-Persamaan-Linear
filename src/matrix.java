@@ -44,12 +44,16 @@ public class matrix {
 			in.nextLine(); //same
 			this.m=this.n;
 		}
-		System.out.printf("Masukkan matriks:\n");
-		for (int i = 0; i < this.n; i++)
-			for (int j = 0; j < this.m; j++) {
-				this.mat[i][j] = this.in.nextFloat();
-			}
-		in.nextLine();//eats newline
+		if (this.m==0 || this.n==0){
+			System.out.println("Matrix masukan tidak valid.");
+		} else {
+			System.out.printf("Masukkan matriks:\n");
+			for (int i = 0; i < this.n; i++)
+				for (int j = 0; j < this.m; j++) {
+					this.mat[i][j] = this.in.nextFloat();
+				}
+			in.nextLine();//eats newline
+		}
 	}
 
 	void readFile(int k) {
