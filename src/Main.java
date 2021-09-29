@@ -105,6 +105,8 @@ public class Main{
                         m1.outMat();
                     } else if (m1.determinanKofaktor()==0){
                         System.out.println("Matriks tidak memiliki invers");
+                    } else {
+                        System.out.println("Matrix tidak dapat diproses.");
                     }
                 } else if (metode == 2){
                     m1.inversKofaktor();
@@ -112,6 +114,8 @@ public class Main{
                         m1.outMat();
                     } else if (m1.determinanKofaktor()==0){
                         System.out.println("Matriks tidak memiliki invers");
+                    } else {
+                        System.out.println("Matrix tidak dapat diproses.");
                     }
                 }
 //========================INTERPOLASI=========================================
