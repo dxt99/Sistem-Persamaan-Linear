@@ -69,9 +69,9 @@ public class matrix {
 				String[] temp = s.split(" ", 0);
 				for (int j = 0; j < temp.length; j++) this.mat[i][j] = Double.parseDouble(temp[j]);
 				i++;
+				this.m=temp.length;
 			}
 			this.n = i;
-			this.m = i + k;
 			filein.close();
 		} catch (FileNotFoundException ex) {
 			System.out.printf("File not found\n"); //loops back to drvier
