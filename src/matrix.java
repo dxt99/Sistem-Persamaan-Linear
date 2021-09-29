@@ -510,38 +510,55 @@ public class matrix {
 	
 	public void inversOBE() {
 
-		double[][] id = new double[1000][1000];
+		matrix id = new matrix();
 		int barId, kolId;
-		int i, j, k;
+		int i, j, k, not0, idxNot0;
 		double denom, x;
+		boolean found;
 
 		barId= this.n;
 		kolId = this.m;
+		id.n = this.n;
+		id.m = this.m;
 
 		// Identitas
 		for (i=0; i<=barId-1; i++){
 			for (j=0; j<=kolId-1; j++){
 				if (i==j){
-					id[i][j] = 1;
+					id.mat[i][j] = 1;
 				} else {
-					id[i][j] = 0;
+					id.mat[i][j] = 0;
 				}
 			}
 		}
 
 		// Fase Maju
 		for (i=0; i<=barId-1; i++){
+			if (this.mat[i][i]==0){
+				found = false;
+				idxNot0 = i;
+				while ((idxNot0<=barId-1) && !found){
+					if (this.mat[idxNot0][idxNot0] != 0){
+						found = true;
+					} else {
+						idxNot0 += 1;
+					}
+				}
+				tukarBaris(i, idxNot0);
+				id.tukarBaris(i, idxNot0);
+				id.tukarKolom(i, idxNot0);
+			}
 			denom = this.mat[i][i];
 			for (j=0; j<=kolId; j++){
 				this.mat[i][j] /= denom;
-				id[i][j] /= denom;
+				id.mat[i][j] /= denom;
 			}
 			for (j=i+1; j<=barId-1; j++){
 				if (this.mat[j][i] != 0){
 					x = (-1*this.mat[j][i]/this.mat[i][i]);
 					for (k=0; k<=kolId-1; k++){
 						this.mat[j][k] += this.mat[i][k] * x;
-						id[j][k] += id[i][k] * x;
+						id.mat[j][k] += id.mat[i][k] * x;
 					}
 				}
 			}
@@ -554,7 +571,7 @@ public class matrix {
 					x = (-1*this.mat[j][i]/this.mat[i][i]);
 					for (k=0; k<=kolId-1; k++){
 						this.mat[j][k] += this.mat[i][k] * x;
-						id[j][k] += id[i][k] * x;
+						id.mat[j][k] += id.mat[i][k] * x;
 					}
 				}
 			}
@@ -563,7 +580,7 @@ public class matrix {
 		// Copy id to this.mat
 		for (i=0; i<=barId-1; i++) {
 			for (j = 0; j <= kolId; j++) {
-				this.mat[i][j] = id[i][j];
+				this.mat[i][j] = id.mat[i][j];
 				if (this.mat[i][j] == -0) {
 					this.mat[i][j] = 0;
 				}
