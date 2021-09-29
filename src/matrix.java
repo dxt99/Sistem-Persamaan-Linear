@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Formatter;
 import java.io.*;
+import java.lang.Math;
 
 public class matrix {
 	double[][] mat = new double[1000][1000];
@@ -131,10 +132,10 @@ public class matrix {
 			while(this.mat[z][j]<0.00001&&j<this.m)j++;
 			
 			//handling baris 0
-			if(j==this.m-1&&abs(this.mat[z][j])>0.000001){
+			if(j==this.m-1&&Math.abs(this.mat[z][j])>0.000001){
 				System.out.println("Tidak ada solusi");
 				return;
-			} else if(j==this.m-1&&abs(this.mat[z][j])<0.000001){
+			} else if(j==this.m-1&&Math.abs(this.mat[z][j])<0.000001){
 				continue;
 			}
 			if(j<this.m-1)break;
@@ -147,22 +148,22 @@ public class matrix {
 			boolean yes=false;
 			System.out.printf("x_%d = ",j+1);
 			for(j++;j<this.m-1;j++){
-				if(abs(this.mat[i][j])>0.000001)yes=true;
+				if(Math.abs(this.mat[i][j])>0.000001)yes=true;
 				//FORMATIING 
 				if(this.mat[i][j]<-0.000001)System.out.printf("- %f*s_%d ",-1*this.mat[i][j],j+1);
 				if(this.mat[i][j]>0.000001)System.out.printf("+ %f*s_%d ",this.mat[i][j],j+1);
 			}
-			if(yes&&abs(this.mat[i][this.m-1])<0.000001)System.out.println();
+			if(yes&&Math.abs(this.mat[i][this.m-1])<0.000001)System.out.println();
 			else if(yes&&this.mat[i][this.m-1]>0.000001)System.out.printf("+ %f\n",this.mat[i][j]);
 			else if(yes&&this.mat[i][this.m-1]<-0.000001)System.out.printf("- %f\n",-1*this.mat[i][j]);
-			else if(abs(this.mat[i][this.m-1])<0.000001)System.out.printf("0\n");
+			else if(Math.abs(this.mat[i][this.m-1])<0.000001)System.out.printf("0\n");
 			else System.out.printf("%f\n",this.mat[i][j]);
 			
 			if(yes){
 				j=0;
-				while(abs(this.mat[i][j])<0.000001&&j<this.m)j++;
+				while(Math.abs(this.mat[i][j])<0.000001&&j<this.m)j++;
 				for(j++;j<this.m-1;j++){
-					if(abs(this.mat[i][j])>0.000001&&!done[j])System.out.printf("x_%d = s_%d\n",j+1,j+1);
+					if(Math.abs(this.mat[i][j])>0.000001&&!done[j])System.out.printf("x_%d = s_%d\n",j+1,j+1);
 					done[j]=true;
 				}
 			}
@@ -182,13 +183,13 @@ public class matrix {
 			for(int i=0;i<this.n;i++)done[i]=false;
 			for (;z>=0;z--){
 				int j=0;
-				while(abs(this.mat[z][j])<0.000001&&j<this.m)j++;
+				while(Math.abs(this.mat[z][j])<0.000001&&j<this.m)j++;
 				
 				//handling baris 0
-				if(j==this.m-1&&abs(this.mat[z][j])>0.000001){
+				if(j==this.m-1&&Math.abs(this.mat[z][j])>0.000001){
 					fileout.format("Tidak ada solusi\n");
 					return;
-				} else if(j==this.m-1&&abs(this.mat[z][j])<0.000001){
+				} else if(j==this.m-1&&Math.abs(this.mat[z][j])<0.000001){
 					continue;
 				}
 				if(j<this.m-1)break;
@@ -196,27 +197,27 @@ public class matrix {
 			if(z==-1)fileout.format("Tidak ada solusi\n");
 			for(int i=0;i<=z;i++){
 				int j=0;
-				while(abs(this.mat[i][j])<0.000001&&j<this.m)j++;
+				while(Math.abs(this.mat[i][j])<0.000001&&j<this.m)j++;
 				//All other cases
 				boolean yes=false;
 				fileout.format("x_%d = ",j+1);
 				for(j++;j<this.m-1;j++){
-					if(abs(this.mat[i][j])>0.000001)yes=true;
+					if(Math.abs(this.mat[i][j])>0.000001)yes=true;
 					//FORMATIING 
 					if(this.mat[i][j]<-0.000001)fileout.format("- %f*s_%d ",-1*this.mat[i][j],j+1);
 					if(this.mat[i][j]>0.000001)fileout.format("+ %f*s_%d ",this.mat[i][j],j+1);
 				}
-				if(yes&&abs(this.mat[i][this.m-1])<0.000001)fileout.format("\n");
+				if(yes&&Math.abs(this.mat[i][this.m-1])<0.000001)fileout.format("\n");
 				else if(yes&&this.mat[i][this.m-1]>0.000001)fileout.format("+ %f\n",this.mat[i][j]);
 				else if(yes&&this.mat[i][this.m-1]<-0.000001)fileout.format("- %f\n",-1*this.mat[i][j]);
-				else if(abs(this.mat[i][this.m-1])<0.000001)fileout.format("0\n");
+				else if(Math.abs(this.mat[i][this.m-1])<0.000001)fileout.format("0\n");
 				else fileout.format("%f\n",this.mat[i][j]);
 				
 				if(yes){
 					j=0;
-					while(abs(this.mat[i][j])<0.00001&&j<this.m)j++;
+					while(Math.abs(this.mat[i][j])<0.00001&&j<this.m)j++;
 					for(j++;j<this.m-1;j++){
-						if(abs(this.mat[i][j])>0.000001&&!done[j])fileout.format("x_%d = s_%d\n",j+1,j+1);
+						if(Math.abs(this.mat[i][j])>0.000001&&!done[j])fileout.format("x_%d = s_%d\n",j+1,j+1);
 						done[j]=true;
 					}
 				}

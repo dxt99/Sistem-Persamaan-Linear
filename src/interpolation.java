@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Formatter;
 import java.io.*;
+import java.lang.Math;
 
 public class interpolation{
 	double[] x= new double[1000];
@@ -101,13 +102,13 @@ public class interpolation{
 		int z=m.n-1;
 		for (;z>=0;z--){
 			int j=0;
-			while(abs(m.mat[z][j])<0.000001&&j<m.m)j++;
+			while(Math.abs(m.mat[z][j])<0.000001&&j<m.m)j++;
 			
 			//handling baris 0
-			if(j==m.m-1&&abs(m.mat[z][j])>0.000001){
+			if(j==m.m-1&&Math.abs(m.mat[z][j])>0.000001){
 				System.out.println("Tidak ada solusi");
 				return;
-			} else if(j==m.m-1&&abs(m.mat[z][j])<0.000001){
+			} else if(j==m.m-1&&Math.abs(m.mat[z][j])<0.000001){
 				continue;
 			}
 			if(j<m.m-1)break;
@@ -120,10 +121,10 @@ public class interpolation{
 		boolean yes=false;
 		for(int i=0;i<=z;i++){
 			int j=0;
-			while(abs(m.mat[i][j])<0.000001&&j<m.m)j++;
+			while(Math.abs(m.mat[i][j])<0.000001&&j<m.m)j++;
 			//All other cases
 			for(j++;j<m.m-1;j++){
-				if(abs(m.mat[i][j])<0.000001)yes=true;
+				if(Math.abs(m.mat[i][j])<0.000001)yes=true;
 			}
 		}
 		if(yes){
@@ -133,7 +134,7 @@ public class interpolation{
 			for(int i=0;i<=z;i++){
 				int j=0;
 				double var=1;
-				while(abs(m.mat[i][j])<0.00001&&j<m.m){
+				while(Math.abs(m.mat[i][j])<0.00001&&j<m.m){
 					j++;
 					var*=this.xtar;
 				}
@@ -160,13 +161,13 @@ public class interpolation{
 			Formatter fileout = new Formatter(file);
 				for (;z>=0;z--){
 				int j=0;
-				while(abs(m.mat[z][j]<0.00001)&&j<m.m)j++;
+				while(Math.abs(m.mat[z][j])<0.00001&&j<m.m)j++;
 				
 				//handling baris 0
-				if(j==m.m-1&&abs(m.mat[z][j])>0.000001){
+				if(j==m.m-1&&Math.abs(m.mat[z][j])>0.000001){
 					System.out.printf("Tidak ada solusi\n");
 					return;
-				} else if(j==m.m-1&&abs(m.mat[z][j])<0.000001){
+				} else if(j==m.m-1&&Math.abs(m.mat[z][j])<0.000001){
 					continue;
 				}
 				if(j<m.m-1)break;
@@ -179,10 +180,10 @@ public class interpolation{
 			boolean yes=false;
 			for(int i=0;i<=z;i++){
 				int j=0;
-				while(abs(m.mat[i][j])<0.000001&&j<m.m)j++;
+				while(Math.abs(m.mat[i][j])<0.000001&&j<m.m)j++;
 				//All other cases
 				for(j++;j<m.m-1;j++){
-					if(abs(m.mat[i][j])>0.000001)yes=true;
+					if(Math.abs(m.mat[i][j])>0.000001)yes=true;
 				}
 			}
 			if(yes){
@@ -192,7 +193,7 @@ public class interpolation{
 				for(int i=0;i<=z;i++){
 					int j=0;
 					double var=1;
-					while(abs(m.mat[i][j])<0.000001&&j<m.m){
+					while(Math.abs(m.mat[i][j])<0.000001&&j<m.m){
 						j++;
 						var*=this.xtar;
 					}

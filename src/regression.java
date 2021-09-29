@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Formatter;
 import java.io.*;
+import java.lang.Math;
 
 public class regression{
 	double[][] x = new double[1000][1000];
@@ -115,13 +116,13 @@ public class regression{
 		int z=m.n-1;
 		for (;z>=0;z--){
 			int j=0;
-			while(abs(m.mat[z][j])<0.00001&&j<m.m)j++;
+			while(Math.abs(m.mat[z][j])<0.00001&&j<m.m)j++;
 			
 			//handling baris 0
-			if(j==m.m-1&&abs(m.mat[z][j])>0.000001){
+			if(j==m.m-1&&Math.abs(m.mat[z][j])>0.000001){
 				System.out.println("Tidak ada solusi");
 				return;
-			} else if(j==m.m-1&&abs(m.mat[z][j])<0.000001){
+			} else if(j==m.m-1&&Math.abs(m.mat[z][j])<0.000001){
 				continue;
 			}
 			if(j<m.m-1)break;
@@ -134,10 +135,10 @@ public class regression{
 		boolean yes=false;
 		for(int i=0;i<=z;i++){
 			int j=0;
-			while(abs(m.mat[i][j])<0.00001&&j<m.m)j++;
+			while(Math.abs(m.mat[i][j])<0.00001&&j<m.m)j++;
 			//All other cases
 			for(j++;j<m.m-1;j++){
-				if(abs(m.mat[i][j])>0.000001)yes=true;
+				if(Math.abs(m.mat[i][j])>0.000001)yes=true;
 			}
 		}
 		if(yes){
@@ -146,14 +147,14 @@ public class regression{
 			System.out.printf("f(x) = ");
 			for(int i=0;i<=z;i++){
 				int j=0;
-				while(abs(m.mat[i][j])<0.000001&&j<m.m){
+				while(Math.abs(m.mat[i][j])<0.000001&&j<m.m){
 					j++;
 				}
 				if(i==0&&j==0)System.out.printf("%f ",m.mat[i][m.m-1]);
 				else if(i==0)System.out.printf("%fx_%d ",m.mat[i][m.m-1],j);
 				else if(m.mat[i][m.m-1]>0.000001)System.out.printf("+ %fx_%d ",m.mat[i][m.m-1],j);
 				else if(m.mat[i][m.m-1]<-0.000001)System.out.printf("- %fx_%d ",-1*m.mat[i][m.m-1],j);
-				ans+=(this.xtar[j+1]*m.mat[i][m.m-1]);
+				ans+=(this.xtar[j]*m.mat[i][m.m-1]);
 			}
 			System.out.printf("\nNilai taksiran adalah: %f\n",ans);
 		}
@@ -170,13 +171,13 @@ public class regression{
 			Formatter fileout = new Formatter(file);
 				for (;z>=0;z--){
 				int j=0;
-				while(abs(m.mat[z][j])<0.000001&&j<m.m)j++;
+				while(Math.abs(m.mat[z][j])<0.000001&&j<m.m)j++;
 				
 				//handling baris 0
-				if(j==m.m-1&&abs(m.mat[z][j])>0.000001){
+				if(j==m.m-1&&Math.abs(m.mat[z][j])>0.000001){
 					System.out.printf("Tidak ada solusi\n");
 					return;
-				} else if(j==m.m-1&&abs(m.mat[z][j])<0.000001){
+				} else if(j==m.m-1&&Math.abs(m.mat[z][j])<0.000001){
 					continue;
 				}
 				if(j<m.m-1)break;
@@ -189,10 +190,10 @@ public class regression{
 			boolean yes=false;
 			for(int i=0;i<=z;i++){
 				int j=0;
-				while(abs(m.mat[i][j])<0.000001&&j<m.m)j++;
+				while(Math.abs(m.mat[i][j])<0.000001&&j<m.m)j++;
 				//All other cases
 				for(j++;j<m.m-1;j++){
-					if(abs(m.mat[i][j])>0.000001)yes=true;
+					if(Math.abs(m.mat[i][j])>0.000001)yes=true;
 				}
 			}
 			if(yes){
@@ -201,14 +202,14 @@ public class regression{
 				fileout.format("f(x) = ");
 				for(int i=0;i<=z;i++){
 					int j=0;
-					while(abs(m.mat[i][j])<0.000001&&j<m.m){
+					while(Math.abs(m.mat[i][j])<0.000001&&j<m.m){
 						j++;
 					}
 					if(i==0&&j==0)fileout.format("%f ",m.mat[i][m.m-1]);
 					else if(i==0)fileout.format("%fx_%d ",m.mat[i][m.m-1],j);
 					else if(m.mat[i][m.m-1]>0.000001)fileout.format("+ %fx_%d ",m.mat[i][m.m-1],j);
 					else if(m.mat[i][m.m-1]<-0.000001)fileout.format("- %fx_%d ",-1*m.mat[i][m.m-1],j);
-					ans+=(this.xtar[j+1]*m.mat[i][m.m-1]);
+					ans+=(this.xtar[j]*m.mat[i][m.m-1]);
 				}
 				fileout.format("\nNilai taksiran adalah: %f\n",ans);
 			}
