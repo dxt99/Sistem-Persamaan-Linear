@@ -125,8 +125,8 @@ public class matrix {
 	void outPersKey(){
 		gaussJordan();
 		int z=this.n-1;
-		boolean[] done=new boolean[this.m-1];
-		for(int i=0;i<this.n;i++)done[i]=false;
+		boolean[] done=new boolean[this.m];
+		for(int i=0;i<this.m;i++)done[i]=false;
 		for (;z>=0;z--){
 			int j=0;
 			while(this.mat[z][j]<0.00001&&j<this.m)j++;
@@ -179,8 +179,8 @@ public class matrix {
 			Formatter fileout = new Formatter(file);
 			gaussJordan();
 			int z=this.n-1;
-			boolean[] done= new boolean[this.n];
-			for(int i=0;i<this.n;i++)done[i]=false;
+			boolean[] done= new boolean[this.m];
+			for(int i=0;i<this.m;i++)done[i]=false;
 			for (;z>=0;z--){
 				int j=0;
 				while(Math.abs(this.mat[z][j])<0.000001&&j<this.m)j++;
