@@ -264,6 +264,35 @@ public class matrix {
 			System.out.printf("File not found\n"); //loops back to drvier
 		}
 	}
+	
+	public void outCol(){
+		System.out.printf("Keluaran Matriks:\n1. Keyboard\n2. File\nPilihan: ");
+		int choice = this.in.nextInt();
+		in.nextLine(); //eats newline
+		if (choice == 1) this.outColKey();
+		else if (choice == 2) this.outColFile(); 
+		else {
+			System.out.printf("Masukan tidak valid\n");
+			this.outFloat(n);
+		}
+	}
+	
+	void outColKey(){
+		for(int i=0;i<this.n;i++)System.out.printf("x_%d=%f\n",i+1,this.mat[i][0];
+	}
+	
+	void outColFile(){
+		System.out.printf("Masukkan nama file:\n");
+		String file = this.in.nextLine();
+		file="../test/output/"+file;
+		try{
+			Formatter fileout = new Formatter(file);
+			for(int i=0;i<this.n;i++)fileout.format("x_%d=%f\n",i+1,this.mat[i][0];
+			
+		} catch (FileNotFoundException ex) {
+			System.out.printf("File not found\n"); //loops back to drvier
+		}
+	}
 
 	//*OPERATIONS*//
 	//swaps i=baris1 and i=baris2 in this.mat[i][]
