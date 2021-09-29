@@ -337,7 +337,7 @@ public class matrix {
 		boolean found = false;
 		while (j <= m - 1 && !found) {
 			while (i <= n - 1 && !found) {
-				if (this.mat[i][j] != 0) {
+				if (this.mat[i][j] >= 0.000001 || this.mat[i][j] <=-0.000001) {
 					found = true;
 				} else {
 					i += 1;
@@ -401,7 +401,7 @@ public class matrix {
 		// fix -0
 		for (i = 0; i <= n - 1; i++) {
 			for (j = 0; j <= m - 1; j++) {
-				if (this.mat[i][j] == -0) {
+				if (this.mat[i][j] < 0.000001 && this.mat[i][j] > -0.000001) {
 					this.mat[i][j] = 0;
 				}
 			}
