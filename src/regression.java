@@ -15,7 +15,7 @@ public class regression{
 	regression(){
 		for(int i=0;i<1000;i++){
 			y[i]=0;
-			xtar[i]=0;
+			xtar[i]=1;
 			for(int j=0;j<1000;j++){
 				x[i][j]=1; //multiplication identity
 			}
