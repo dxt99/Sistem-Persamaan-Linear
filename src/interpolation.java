@@ -124,7 +124,7 @@ public class interpolation{
 			while(Math.abs(m.mat[i][j])<0.000001&&j<m.m)j++;
 			//All other cases
 			for(j++;j<m.m-1;j++){
-				if(Math.abs(m.mat[i][j])<0.000001)yes=true;
+				if(Math.abs(m.mat[i][j])>0.000001)yes=true;
 			}
 		}
 		if(yes){
