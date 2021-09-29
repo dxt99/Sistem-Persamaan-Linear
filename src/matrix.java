@@ -422,9 +422,9 @@ public class matrix {
 			done = false;
 			tempBar = 0;
 			while (kol <= this.m - 1 && !done) {
-				if (this.mat[bar][kol] == 1) {
+				if (this.mat[bar][kol] <= 1.000001 && this.mat[bar][kol] >= 0.999999) {
 					while (tempBar <= this.n - 1) {
-						if (this.mat[tempBar][kol] != 0 && tempBar != bar) {
+						if ((this.mat[tempBar][kol] >= 0.000001 || this.mat[tempBar][kol] <=-0.000001) && tempBar != bar) {
 							tambahBaris(tempBar, bar, (-1 * this.mat[tempBar][kol] / this.mat[bar][kol]));
 						}
 						tempBar += 1;
