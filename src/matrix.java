@@ -278,7 +278,7 @@ public class matrix {
 	}
 	
 	void outColKey(){
-		for(int i=0;i<this.n;i++)System.out.printf("x_%d=%f\n",i+1,this.mat[i][0];
+		for(int i=0;i<this.n;i++)System.out.printf("x_%d=%f\n",i+1,this.mat[i][0]);
 	}
 	
 	void outColFile(){
@@ -287,7 +287,7 @@ public class matrix {
 		file="../test/output/"+file;
 		try{
 			Formatter fileout = new Formatter(file);
-			for(int i=0;i<this.n;i++)fileout.format("x_%d=%f\n",i+1,this.mat[i][0];
+			for(int i=0;i<this.n;i++)fileout.format("x_%d=%f\n",i+1,this.mat[i][0]);
 			
 		} catch (FileNotFoundException ex) {
 			System.out.printf("File not found\n"); //loops back to drvier

@@ -5,7 +5,6 @@ public class Main{
     public static void main (String[] args){
 
         matrix m1 = new matrix();
-        matrix mh = new matrix();
         interpolation i1 = new interpolation();
         regression r1 = new regression();
         int pilihan = 0;
@@ -46,19 +45,28 @@ public class Main{
                     m1.gauss();
                     if (!(m1.n == 0 || m1.m == 0)){
                         m1.outPers();
+                    } else {
+                        System.out.println("Matrix tidak dapat diproses.");
                     }
                 } else if (metode == 2) {
                     m1.gaussJordan();
                     if (!(m1.n == 0 || m1.m == 0)){
                         m1.outPers();
+                    } else {
+                        System.out.println("Matrix tidak dapat diproses.");
                     }
                 } else if (metode == 3) {
-                    mh = m1.splInvers(m1);
                     if (!(m1.n == 0 || m1.m == 0)){
-                        mh.outPers();               // Tidak ada solusi
+                        m1.splInvers(m1).outCol();
+                    } else {
+                        System.out.println("Matrix tidak dapat diproses.");
                     }
                 } else if (metode == 4) {
-                    // processing
+                    if (!(m1.n == 0 || m1.m == 0)){
+                        m1.splCramer(m1).outCol();
+                    } else {
+                        System.out.println("Matrix tidak dapat diproses.");
+                    }
                 }
 //========================Determinan=========================================
             } else if (pilihan == 2) {
@@ -76,6 +84,8 @@ public class Main{
                     m1.outFloat(m1.determinanOBE());
                 } else if ((metode == 2) && (!(m1.n == 0 || m1.m == 0))){
                     m1.outFloat(m1.determinanKofaktor());
+                } else {
+                    System.out.println("Matrix tidak dapat diproses.");
                 }
 //========================INVERS=========================================
             } else if (pilihan == 3) {
