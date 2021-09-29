@@ -488,6 +488,11 @@ public class matrix {
 
 				}
 			}
+
+		if (hasil < 0.000001 && hasil >-0.000001){
+			hasil = 0;
+		}
+		
 		return hasil;
 	}
 
