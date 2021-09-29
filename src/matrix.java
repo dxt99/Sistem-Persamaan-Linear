@@ -707,9 +707,9 @@ public class matrix {
 				A.mat[j][i] = b.mat[j][0];
 			}
 			double det_x = A.determinanKofaktor();
-			int k = 0;
-			hasil.mat[k][0] = det_x/det;
-			k += 1;
+			
+			hasil.mat[i][0] = det_x/det;
+			
 		}
 		return hasil;
 	}
