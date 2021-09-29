@@ -91,13 +91,17 @@ public class Main{
                 m1.read(0);
                 if (metode == 1){
                     m1.inversOBE();
-                    if ((!(m1.n == 0 || m1.m == 0))) {
+                    if ((!(m1.n == 0 || m1.m == 0)) && m1.determinanKofaktor()!=0) {
                         m1.outMat();
+                    } else if (m1.determinanKofaktor()==0){
+                        System.out.println("Matriks tidak memiliki invers");
                     }
                 } else if (metode == 2){
                     m1.inversKofaktor();
-                    if (!(m1.n == 0 || m1.m == 0)) {
+                    if (!(m1.n == 0 || m1.m == 0) && m1.determinanKofaktor()!=0) {
                         m1.outMat();
+                    } else if (m1.determinanKofaktor()==0){
+                        System.out.println("Matriks tidak memiliki invers");
                     }
                 }
 //========================INTERPOLASI=========================================
