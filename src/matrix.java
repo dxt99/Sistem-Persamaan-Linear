@@ -125,7 +125,7 @@ public class matrix {
 	void outPersKey(){
 		gaussJordan();
 		int z=this.n-1;
-		boolean[] done=new boolean[this.n];
+		boolean[] done=new boolean[this.m-1];
 		for(int i=0;i<this.n;i++)done[i]=false;
 		for (;z>=0;z--){
 			int j=0;
