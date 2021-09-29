@@ -677,9 +677,12 @@ public class matrix {
 		}
 		for(int i=0; i<=(m1.n-1); i++){
 			int j = m1.m-1;
-			b.mat[i][j] = m1.mat[i][j];
+			b.mat[i][0] = m1.mat[i][j];
 		}
-
+		A.n=m1.n;
+		A.m=A.n;
+		b.n=m1.n;
+		b.m=1;
 		matrix hasil = new matrix();
 		A.inversOBE();
 		hasil = kaliMatrix(A, b);
@@ -694,13 +697,18 @@ public class matrix {
 				A.mat[i][j] = m1.mat[i][j];
 			}
 		}
+		A.n=m1.n;
+		A.m=A.n;
 		for (int i = 0; i <= (m1.n - 1); i++) {
 			int j = (m1.m) - 1;
-			b.mat[i][j] = m1.mat[i][j];
+			b.mat[i][0] = m1.mat[i][j];
 		}
+		b.n=m1.n;
+		b.m=1;
 		double det = A.determinanKofaktor();
 
 		matrix hasil = new matrix();
+		
 
 		for (int i=0; i<=(A.m-1); i++){
 			for(int j=0; j<=(A.n-1); j++) {
@@ -708,9 +716,15 @@ public class matrix {
 			}
 			double det_x = A.determinanKofaktor();
 			
+			for(int j=0;j<A.n;j++){
+				A.mat[j][i]=m1.mat[j][i];
+			}
+			
 			hasil.mat[i][0] = det_x/det;
 			
 		}
+		hasil.n=m1.n;
+		hasil.m=1;
 		return hasil;
 	}
 
