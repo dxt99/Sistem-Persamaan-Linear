@@ -175,7 +175,8 @@ public class regression{
 				
 				//handling baris 0
 				if(j==m.m-1&&Math.abs(m.mat[z][j])>0.000001){
-					System.out.printf("Tidak ada solusi\n");
+					fileout.format("Tidak ada solusi\n");
+					fileout.close();
 					return;
 				} else if(j==m.m-1&&Math.abs(m.mat[z][j])<0.000001){
 					continue;
@@ -183,7 +184,8 @@ public class regression{
 				if(j<m.m-1)break;
 			}
 			if(z==-1){
-				System.out.printf("Tidak ada solusi\n");
+				fileout.format("Tidak ada solusi\n");
+				fileout.close();
 				return;
 			}
 			double ans=0;
@@ -197,7 +199,7 @@ public class regression{
 				}
 			}
 			if(yes){
-				System.out.printf("Tidak ada solusi\n");
+				fileout.format("Tidak ada solusi\n");
 			}else{
 				fileout.format("f(x) = ");
 				for(int i=0;i<=z;i++){

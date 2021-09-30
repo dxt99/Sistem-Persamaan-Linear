@@ -133,14 +133,14 @@ public class matrix {
 			
 			//handling baris 0
 			if(j==this.m-1&&Math.abs(this.mat[z][j])>0.000001){
-				System.out.println("Tidak ada solusi");
+				System.out.println("Tidak ada solusi1");
 				return;
 			} else if(j==this.m-1&&Math.abs(this.mat[z][j])<0.000001){
 				continue;
 			}
 			if(j<this.m-1)break;
 		}
-		if(z==-1)System.out.printf("Tidak ada solusi\n");
+		if(z==-1)System.out.printf("Tidak ada solusi2\n");
 		for(int i=0;i<=z;i++){
 			int j=0;
 			while(this.mat[i][j]<0.00001&&j<this.m)j++;
@@ -188,6 +188,7 @@ public class matrix {
 				//handling baris 0
 				if(j==this.m-1&&Math.abs(this.mat[z][j])>0.000001){
 					fileout.format("Tidak ada solusi\n");
+					fileout.close();
 					return;
 				} else if(j==this.m-1&&Math.abs(this.mat[z][j])<0.000001){
 					continue;
