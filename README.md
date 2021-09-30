@@ -1,35 +1,25 @@
-## matrix.java:
+# Tubes 01 Algeo: Sistem Persamaan Linier
 
-### public functions:
+## Cara Menjalankan:
 
-read(k): k=1 reads augmented matrix, k=0 reads square matrix;
+### $java Main
 
-outFloat(k): outputs k(float)
+### pada folder bin
 
-outMat(): outputs this.mat (entire matrix)
+## Teknis I/O:
 
-outPers(): outputs matrix equation solution (make sure this is augmented)
+### Keyboard 
 
-### issues:
+Instruksi pada layar
 
-- library(?)
+### Text File
 
-## interpolation.java:
+#### input dapat dibaca langsung pada folder bin atau pada folder test/input/
 
-### public functions:
+#### output pada folder /test/output/
 
-read(): reads points
+matriks: berukuran n x m
 
-out(): outputs polynomial and predicted value
+interpolasi: berukuran (n+1) * 2 (titik) + 1 (x yang ingin ditaksir) dengan n adalah derajat polinom
 
-### issues:
-
-## regression.java:
-
-### public functions:
-
-read(): reads n samples of size (n+1) each + 1 sample (of size n)
-
-out(): outputs equation and predicted value
-
-### issues:
+regresi: berukuran (n+1) * m (titik) + n (x yang ingin ditaksir) dengan n adalah banyak peubah x
