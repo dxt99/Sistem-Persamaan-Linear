@@ -1,6 +1,18 @@
 # Tubes 01 Algeo: Sistem Persamaan Linier
 
-## Cara Menjalankan:
+## Directories
+
+bin: java byteclass
+
+src: java sourcecode
+
+test/input: file input
+
+test/output: file output
+
+doc: laporan tugas besar
+
+## Cara Menjalankan
 
 Pada folder bin, jalankan:
 
