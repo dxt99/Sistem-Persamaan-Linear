@@ -133,7 +133,7 @@ public class matrix {
 			
 			//handling baris 0
 			if(j==this.m-1&&Math.abs(this.mat[z][j])>0.000001){
-				System.out.println("Tidak ada solusi1");
+				System.out.println("Tidak ada solusi");
 				return;
 			} else if(j==this.m-1&&Math.abs(this.mat[z][j])<0.000001){
 				continue;
