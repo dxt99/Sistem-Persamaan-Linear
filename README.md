@@ -2,9 +2,9 @@
 
 ## Cara Menjalankan:
 
-### $java Main
+Pada folder bin, jalankan:
 
-### pada folder bin
+ $java Main
 
 ## Teknis I/O:
 
