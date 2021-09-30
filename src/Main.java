@@ -27,7 +27,7 @@ public class Main{
                 System.out.print("Pilihan tidak tersedia. Masukkan angka antara 1-6: ");
                 pilihan = in.nextInt();
             }
-//========================SPL=========================================
+
             if (pilihan == 1) {
                 System.out.println("Daftar Metode");
                 System.out.println("1. Metode eliminasi Gauss");
@@ -56,19 +56,19 @@ public class Main{
                         System.out.println("Matrix tidak dapat diproses.");
                     }
                 } else if (metode == 3) {
-                    if (!(m1.n == 0 || m1.m == 0)){
+                    if ((!(m1.n == 0 || m1.m == 0)) && (m1.n==m1.m-1)){
                         m1.splInvers(m1).outCol();
                     } else {
                         System.out.println("Matrix tidak dapat diproses.");
                     }
                 } else if (metode == 4) {
-                    if (!(m1.n == 0 || m1.m == 0)){
+                    if ((!(m1.n == 0 || m1.m == 0)) && (m1.n==m1.m-1)){
                         m1.splCramer(m1).outCol();
                     } else {
                         System.out.println("Matrix tidak dapat diproses.");
                     }
                 }
-//========================Determinan=========================================
+
             } else if (pilihan == 2) {
                 System.out.println("Daftar Metode");
                 System.out.println("1. Metode Operasi Baris Elementer");
@@ -87,7 +87,7 @@ public class Main{
                 } else {
                     System.out.println("Matrix tidak dapat diproses.");
                 }
-//========================INVERS=========================================
+
             } else if (pilihan == 3) {
                 System.out.println("Daftar Metode");
                 System.out.println("1. Metode Gauss-Jordan");
@@ -118,11 +118,11 @@ public class Main{
                         System.out.println("Matrix tidak dapat diproses.");
                     }
                 }
-//========================INTERPOLASI=========================================
+
             } else if (pilihan == 4){
                 i1.read();
                 i1.out();
-//========================REGRESI=========================================
+
             } else if (pilihan == 5){
                 r1.read();
                 r1.out();
