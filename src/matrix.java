@@ -262,6 +262,7 @@ public class matrix {
 				}
 				fileout.format("\n");
 			}
+			fileout.close();
 		} catch (FileNotFoundException ex) {
 			System.out.printf("File not found\n"); //loops back to drvier
 		}
@@ -290,7 +291,7 @@ public class matrix {
 		try{
 			Formatter fileout = new Formatter(file);
 			for(int i=0;i<this.n;i++)fileout.format("x_%d=%f\n",i+1,this.mat[i][0]);
-			
+			fileout.close();
 		} catch (FileNotFoundException ex) {
 			System.out.printf("File not found\n"); //loops back to drvier
 		}
