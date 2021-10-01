@@ -57,13 +57,25 @@ public class Main{
                     }
                 } else if (metode == 3) {
                     if ((!(m1.n == 0 || m1.m == 0)) && (m1.n==m1.m-1)){
-                        m1.splInvers(m1).outCol();
+                        m1.m=m1.n;
+                        if(m1.determinanKofaktor()!=0){
+                            m1.m=m1.n+1;
+                            m1.splInvers(m1).outCol();
+                        }else{
+                            System.out.println("Matrix tidak dapat diproses.");
+                        }
                     } else {
                         System.out.println("Matrix tidak dapat diproses.");
                     }
                 } else if (metode == 4) {
                     if ((!(m1.n == 0 || m1.m == 0)) && (m1.n==m1.m-1)){
-                        m1.splCramer(m1).outCol();
+                        m1.m=m1.n;
+                        if(m1.determinanKofaktor()!=0){
+                            m1.m=m1.n+1;
+                            m1.splCramer(m1).outCol();
+                        }else{
+                            System.out.println("Matrix tidak dapat diproses.");
+                        }
                     } else {
                         System.out.println("Matrix tidak dapat diproses.");
                     }
@@ -100,8 +112,8 @@ public class Main{
                 }
                 m1.read(0);
                 if (metode == 1){
-                    m1.inversOBE();
                     if ((!(m1.n == 0 || m1.m == 0)) && m1.determinanKofaktor()!=0) {
+                        m1.inversOBE();
                         m1.outMat();
                     } else if (m1.determinanKofaktor()==0){
                         System.out.println("Matriks tidak memiliki invers");
@@ -109,8 +121,8 @@ public class Main{
                         System.out.println("Matrix tidak dapat diproses.");
                     }
                 } else if (metode == 2){
-                    m1.inversKofaktor();
                     if (!(m1.n == 0 || m1.m == 0) && m1.determinanKofaktor()!=0) {
+                        m1.inversOBE();
                         m1.outMat();
                     } else if (m1.determinanKofaktor()==0){
                         System.out.println("Matriks tidak memiliki invers");
